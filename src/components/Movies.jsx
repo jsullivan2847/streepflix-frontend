@@ -12,7 +12,7 @@ const Movies = ({movies, getMovies}) => {
             ))
         }
         else{
-            console.log('no movies :((')
+            return <h1>Loading...</h1>
         }
     }
     // const displayMovies = movies.map((movie, index) => {
