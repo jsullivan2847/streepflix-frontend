@@ -1,6 +1,6 @@
 const UserSelect = () => {
     return(
-        <h1>UserSelect Component</h1>
+        <h1>UserSelect</h1>
     )
 }
 
