@@ -1,6 +1,9 @@
-const Movie = () => {
+const Movie = ({movie}) => {
+    console.log(movie);
     return(
-        <div className="movie-container"></div>
+        <div className="movie-container">
+            <h5>{movie.title}</h5>
+        </div>
     )
 }
 
