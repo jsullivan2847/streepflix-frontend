@@ -1,6 +1,10 @@
+import Movies from "../components/Movies";
+
 const Dashboard = () => {
     return(
-        <h1>Dashboard</h1>
+        <div className="dashboard-container">
+            <Movies/>
+        </div>
     )
 }
 
