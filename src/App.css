@@ -1,12 +1,27 @@
 .App {
   text-align: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
 }
 
 .nav{
   display: flex;
   justify-content: space-around;
+  width: 100vw;
+  justify-content: space-between;
 }
 .nav a{
   text-decoration: none;
-  color: black;
+  color: white;
+  margin: 0 25px;
+}
+.dashboard-container {
+  width: 100vw;
+  min-height: 70vh;
+}
+.footer {
+  width: 100vw;
 }
