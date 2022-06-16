@@ -1,6 +1,15 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
     return(
-        <h1>Nav Component</h1>
+        <nav className="nav">
+            <Link to="/">
+                <h3>Streepflix</h3>
+            </Link>
+            <Link to="/login">
+                <h3>Log Out / Switch User</h3>
+            </Link>
+        </nav>
     )
 }
 

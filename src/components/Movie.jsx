@@ -1,7 +1,6 @@
 const Movie = () => {
     return(
-        <h1>Movie
-         Component</h1>
+        <h1>Movie Component</h1>
     )
 }
 
