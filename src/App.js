@@ -10,7 +10,18 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [movieState, setMovieState] = useState(null);
+  //global States
+  const [moviesState, setMoviesState] = useState(null);
+
+  const [trailer, setTrailer] = useState(null);
+
+  //This function will get passed down to movies, lift up 
+  //trailer state and pass that back down to display in the header
+  const displayTrailer = (trailer) => {
+    setTrailer(trailer);
+  }
+
+
 
   const API_KEY = "9a7f92208080c78b13a3339d7394e0ee";
   const merylID = '5064';
@@ -25,7 +36,7 @@ function App() {
     const data = await response.json();
 
     //sets movie state with the data retrieved
-    setMovieState(data);
+    setMoviesState(data);
   };
 
   useEffect(() => {getMovies()}, 
@@ -33,9 +44,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header trailer={trailer}/>
       <Route exact path='/'>
-        <Dashboard movies={movieState} getMovies={getMovies}/>
+        <Dashboard movies={moviesState} displayTrailer={displayTrailer} getMovies={getMovies}/>
       </Route>
       <Route path="/login">
         <UserSelect/>
