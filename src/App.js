@@ -1,10 +1,11 @@
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Dashboard from './pages/Dashboard';
 import UserSelect from './pages/UserSelect';
 import UserEdit from './pages/UserEdit';
+import UserAdd from './pages/UserAdd';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -27,21 +28,65 @@ function App() {
     setMovieState(data);
   };
 
-  useEffect(() => {getMovies()}, 
+  const [profiles, setProfiles] = useState(null);
+  const URL = "https://back-streep-end.herokuapp.com/user"
+
+  const getProfiles =  async () => {
+    const response = await fetch (URL);
+    const data = await response.json();
+    setProfiles(data);
+  }
+
+const createProfile =  async (profile) => {
+  await fetch(URL, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(profile)
+  });
+  getProfiles();
+};
+
+const editProfile = async(person, id) => {
+await fetch(URL + id, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "Application/json",
+  },
+  body: JSON.stringify(person)
+});
+getProfiles();
+};
+
+  useEffect(() => {
+    getMovies();
+    getProfiles();
+  }, 
   []);
 
   return (
     <div className="App">
       <Nav/>
+      <Switch>
       <Route exact path='/'>
-        <Dashboard movies={movieState} getMovies={getMovies}/>
+        <Dashboard 
+        movies={movieState} 
+        getMovies={getMovies} 
+        profiles={profiles} 
+        />
       </Route>
       <Route path="/login">
         <UserSelect/>
       </Route>
-      <Route path="/edit">
-        <UserEdit/>
-      </Route>
+      <Route path="/new" render={rp => (
+        <UserAdd createProfile={createProfile} {...rp}/>
+      )
+      }/>
+      <Route path="/:id/edit" render={rp => (
+        <UserEdit editProfile={editProfile} {...rp}/>
+      )}/>
+      </Switch>
       <Footer/>
     </div>
   );

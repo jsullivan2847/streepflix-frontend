@@ -17,15 +17,16 @@ const UserAdd = (props) => {
         setNewForm({
             name: "",
             image: ""
-        })
+        });
+        props.history.push('/');
     }
 
     return(
         <div>
         <h1>UserAdd Component</h1>
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" onChange={handleChange} placeholder="Profile Name"></input>
-            <input type="text" name="image" onChange={handleChange} placeholder="Placeholder Image URL"></input>
+            <input type="text" name="name" onChange={handleChange} placeholder="Profile Name"></input> <br/>
+            <input type="text" name="image" onChange={handleChange} placeholder="Placeholder Image URL"></input> <br/>
             <button>Add Profile</button>
         </form>
         </div>
