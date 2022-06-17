@@ -2,6 +2,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import UserSelect from './pages/UserSelect';
 import UserEdit from './pages/UserEdit';
@@ -32,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav/>
+      <Header/>
       <Route exact path='/'>
         <Dashboard movies={movieState} getMovies={getMovies}/>
       </Route>

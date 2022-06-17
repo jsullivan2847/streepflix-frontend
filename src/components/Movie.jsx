@@ -1,5 +1,6 @@
 import movieTrailer from "movie-trailer";
 import { useEffect, useState } from "react";
+import Video from "./Video";
 const Movie = ({movie}) => {
     //Destructuring the movie info
     const {title, poster_path, backdrop_path, release_date} = movie;
@@ -20,12 +21,13 @@ const Movie = ({movie}) => {
     const trailerLoaded = () => {
         return (
             
-            <iframe src={`https://www.youtube.com/embed/${trailer}?autplay=1`} 
-            frameBorder="0"
-            allow="autoplay"
-            title="video"
-            allowFullScreen>
-            </iframe> 
+            // <iframe src={`https://www.youtube.com/embed/${trailer}?autplay=1`} 
+            // frameBorder="0"
+            // allow="autoplay"
+            // title="video"
+            // allowFullScreen>
+            // </iframe> 
+            <Video trailer={trailer}/>
         )
     }
 
