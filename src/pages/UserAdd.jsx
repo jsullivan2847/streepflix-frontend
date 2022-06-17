@@ -23,7 +23,7 @@ const UserAdd = (props) => {
 
     return(
         <div>
-        <h1>UserAdd Component</h1>
+        <h1>Add A New Profile</h1>
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" onChange={handleChange} placeholder="Profile Name"></input> <br/>
             <input type="text" name="image" onChange={handleChange} placeholder="Placeholder Image URL"></input> <br/>

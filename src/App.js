@@ -28,7 +28,7 @@ function App() {
     setMovieState(data);
   };
 
-  const [profiles, setProfiles] = useState(null);
+  const [profiles, setProfiles] = useState([]);
   const URL = "https://back-streep-end.herokuapp.com/user"
 
   const getProfiles =  async () => {
@@ -60,11 +60,12 @@ getProfiles();
 };
 
   useEffect(() => {
-    getMovies();
-    getProfiles();
+    getMovies().then(() => {
+      getProfiles();
+    }
+    )
   }, 
   []);
-
   return (
     <div className="App">
       <Nav/>
@@ -77,14 +78,14 @@ getProfiles();
         />
       </Route>
       <Route path="/login">
-        <UserSelect/>
+        <UserSelect profiles={profiles}/>
       </Route>
       <Route path="/new" render={rp => (
         <UserAdd createProfile={createProfile} {...rp}/>
       )
       }/>
       <Route path="/:id/edit" render={rp => (
-        <UserEdit editProfile={editProfile} {...rp}/>
+        <UserEdit editProfile={editProfile} profiles={profiles} {...rp}/>
       )}/>
       </Switch>
       <Footer/>

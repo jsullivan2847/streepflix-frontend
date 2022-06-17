@@ -1,22 +1,24 @@
 import { useState } from 'react'
 
 const UserEdit = (props) => {
-
     const id = props.match.params.id
-    const profile = props.profile
-    const me = profile.find(p => p._id === id);
-
-    const [editForm, setEditForm] = useState(me)
-
+    const profiles = props.profiles
+    const profile = profiles.find(p => p._id === id);
+    console.log(profiles)
+    
+    const [editForm, setEditForm] = useState(profile)
+    
     const handleChange = (evt) => {
         setEditForm({...editForm, [evt.target.name]: evt.target.value})
     }
-
+    
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.editProfile(editForm, me._id);
+        props.editProfile(editForm, profile._id);
         props.history.push("/");
     }
+    console.log(props);
+    
     return(
         <div>
         <h1>UserEdit Component</h1>
