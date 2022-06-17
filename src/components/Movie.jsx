@@ -1,31 +1,34 @@
 import movieTrailer from "movie-trailer";
-import { useEffect, useState } from "react";
-const Movie = ({movie}) => {
+import { useState } from "react";
+import Video from "./Video";
+const Movie = ({movie, displayTrailer, getTrailer}) => {
     //Destructuring the movie info
-    const {title, poster_path, backdrop_path, release_date} = movie;
+    const {title, poster_path} = movie;
     //State for movie trailer
-    const [trailer, setTrailer] = useState('');
+    const [trailer, setTrailer] = useState(null);
     //bas URL for poster src
     const posterURL = 'http://image.tmdb.org/t/p/w185'
 
+
     //retrieves movie specific trailer URL param
-    const getTrailer = () => {
-        const response = movieTrailer(title, {id: true}).then(trailerID => {
-            setTrailer(trailerID);
-        }).catch(error => console.log(error));
-    }
+    // const getTrailer = () => {
+    //    movieTrailer(title, {id: true}).then(trailerID => {
+    //         setTrailer(trailerID);
+    //     }).catch(error => console.log(error));
+    // }
 
    
     //Loads youtube embed
     const trailerLoaded = () => {
         return (
             
-            <iframe src={`https://www.youtube.com/embed/${trailer}?autplay=1`} 
-            frameBorder="0"
-            allow="autoplay"
-            title="video"
-            allowFullScreen>
-            </iframe> 
+            // <iframe src={`https://www.youtube.com/embed/${trailer}?autplay=1`} 
+            // frameBorder="0"
+            // allow="autoplay"
+            // title="video"
+            // allowFullScreen>
+            // </iframe> 
+            <Video trailer={trailer}/>
         )
     }
 
@@ -39,12 +42,15 @@ const Movie = ({movie}) => {
     }
 
     //To click trailer on and off
-    const handleClick = () => {
+    const handleClick = (event) => {
+        console.log(event.target);
         if(trailer){
             setTrailer(null);
+            displayTrailer(trailer);
         }
         else{
-            getTrailer();
+            getTrailer(title);
+            displayTrailer(trailer);
         }
     }
 
@@ -52,7 +58,7 @@ const Movie = ({movie}) => {
 
     return(
         <div className="movie-container">
-            {trailer? trailerLoaded() : <></>}
+            {/* {trailer? trailerLoaded() : <></>} */}
             {movie? movieLoaded() : <></>}
         </div>
     )
