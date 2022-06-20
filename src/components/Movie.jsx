@@ -34,7 +34,7 @@ const Movie = ({movie, displayTrailer, getTrailer}) => {
 
     //Loads movie poster and info
     const movieLoaded = () => {
-        return ( <div>
+        return ( <div className="posters-container">
             <img onClick={handleClick} src={posterURL + poster_path} alt={title + "poster"}/>
             <h5>{title}</h5> 
             </div>
