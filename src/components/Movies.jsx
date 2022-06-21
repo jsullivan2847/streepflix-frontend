@@ -1,6 +1,17 @@
 import Movie from "./Movie";
-const Movies = ({movies, getMovies}) => {
+import { useState } from "react";
+import movieTrailer from "movie-trailer";
+const Movies = ({movies, displayTrailer}) => {
 
+    const [trailer, setTrailer] = useState(null);
+    displayTrailer(trailer);
+
+    const getTrailer = (title) => {
+        movieTrailer(title, {id: true}).then(trailerID => {
+             setTrailer(trailerID);
+             
+         }).catch(error => console.log(error))
+     }
     const loaded = () => {
         if(movies){
             //dont know why this is the only 
@@ -10,7 +21,7 @@ const Movies = ({movies, getMovies}) => {
                 //Stops app from rendering Movie components
                 //with broken poster links
                 if(movie.poster_path){
-                    return  <Movie movie={movie} key={index}/>
+                    return  <Movie getTrailer={getTrailer}displayTrailer={displayTrailer} movie={movie} key={index}/>
                 }      
         });
         }

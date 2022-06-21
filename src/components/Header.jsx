@@ -1,6 +1,15 @@
-const Header = () => {
+import Nav from './Nav'
+import Video from './Video'
+
+const Header = ({trailer}) => {
+    
     return(
-        <h1>Header Component</h1>
+        <div className="header">
+            <Nav/>
+            {trailer && <div>
+            <Video trailer={trailer}/>
+        </div>}
+        </div>
     )
 }
 
