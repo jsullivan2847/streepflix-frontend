@@ -3,8 +3,9 @@ const UserSelect = (props) => {
     const handleClick = (e) => {
         props.selectUser(e.target.attributes.id.nodeValue)
         console.log(e.target.nextSibling.innerText)
+        props.history.push("/")
     }
-
+console.log(props)
     return(
         <div className="user-select-container">
             <h1>UserSelect</h1>
