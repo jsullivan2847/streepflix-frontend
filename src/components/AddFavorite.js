@@ -1,10 +1,23 @@
-import React from 'react'
+import {React, useState} from 'react'
 
 const AddFavorite = (props) => {
+  const [favorites, setFavorites] = useState([])
+
+  // const addFavoriteMovie = (movie) => {
+  //   const newFavoriteMovie = [...favorites, movie]
+  //   setFavorites(newFavoriteMovie)
+  // }
+
+  const handleFavoriteClick = () => {
+    alert('clicked')
+  }
+
   return (
-    <div>
-        <span className='span-row'>myFavorites</span>
-    </div>
+    <button 
+    className='btn'
+    onClick={handleFavoriteClick}
+    ><span>&#43;</span>
+    </button>
   )
 }
 

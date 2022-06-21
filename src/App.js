@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import UserSelect from './pages/UserSelect';
 import UserEdit from './pages/UserEdit';
 import UserAdd from './pages/UserAdd';
+import FavoritePage from './pages/FavoritePage';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -98,6 +99,11 @@ function App() {
         <UserAdd createProfile={createProfile} {...rp}/>
       )
       }/>
+
+      <Route path='/favorites'>
+        <FavoritePage />
+      </Route>
+
       <Route path="/:id/edit" render={(rp) => (
         <UserEdit {...rp} editProfile={editProfile} profiles={profiles} />
       )}/>

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import AddFavorite from "./AddFavorite";
 
 const Nav = () => {
     return(
@@ -8,7 +7,7 @@ const Nav = () => {
                 <h3>Streepflix</h3>
             </Link>
             <Link to="/favorites" className="favs">
-                <h3><AddFavorite /></h3>
+                <h3>myFavorites</h3>
             </Link>
             <Link to="/login">
                 <h3>Log Out / Switch User</h3>
