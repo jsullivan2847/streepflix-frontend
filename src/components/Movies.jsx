@@ -3,8 +3,6 @@ import { useState } from "react";
 import movieTrailer from "movie-trailer";
 const Movies = ({movies, displayTrailer}) => {
 
-
-
     const [trailer, setTrailer] = useState(null);
    
     displayTrailer(trailer);
@@ -12,7 +10,6 @@ const Movies = ({movies, displayTrailer}) => {
     const getTrailer = (title) => {
         movieTrailer(title, {id: true}).then(trailerID => {
              setTrailer(trailerID);
-             
          }).catch(error => console.log(error))
      }
     const loaded = () => {

@@ -4,6 +4,8 @@ const Video = ({trailer}) => {
             frameBorder="0"
             allow="autoplay"
             title="video"
+            height={200}
+            width={500}
             allowFullScreen>
             </iframe> 
     )
