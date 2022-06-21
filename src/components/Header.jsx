@@ -5,7 +5,6 @@ const Header = ({trailer}) => {
     
     return(
         <div className="header">
-            <Nav/>
             {trailer && <div>
             <Video trailer={trailer}/>
         </div>}

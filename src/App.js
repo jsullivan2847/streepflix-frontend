@@ -6,6 +6,7 @@ import UserSelect from './pages/UserSelect';
 import UserEdit from './pages/UserEdit';
 import UserAdd from './pages/UserAdd';
 import { useState, useEffect } from 'react';
+import Nav from './components/Nav';
 
 function App() {
 
@@ -99,6 +100,7 @@ console.log(myProfile)
 
   return (
     <div className="App">
+      <Nav/>
       <Switch>
       <Route exact path='/'>
         <Dashboard 
@@ -107,11 +109,12 @@ console.log(myProfile)
         getMovies={getMovies} 
         profiles={profiles} 
         displayTrailer={displayTrailer}
+        myProfile={myProfile}
         />
       </Route>
-      <Route path="/login">
-        <UserSelect profiles={profiles} activeUser={activeUser} selectUser={selectUser}/>
-      </Route>
+      <Route path="/login"
+        render={rp => (<UserSelect profiles={profiles} activeUser={activeUser} selectUser={selectUser} {...rp}/>)
+   } />
       <Route path="/new" render={rp => (
         <UserAdd createProfile={createProfile} {...rp}/>
       )
