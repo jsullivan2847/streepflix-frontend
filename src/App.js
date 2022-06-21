@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
-import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import UserSelect from './pages/UserSelect';
 import UserEdit from './pages/UserEdit';
@@ -9,6 +8,39 @@ import UserAdd from './pages/UserAdd';
 import { useState, useEffect } from 'react';
 
 function App() {
+
+  const [profiles, setProfiles] = useState([]);
+  const URL = "https://back-streep-end.herokuapp.com/user"
+
+  const getProfiles =  async () => {
+    const response = await fetch (URL);
+    const data = await response.json();
+    setProfiles(data);
+  }
+
+  const editProfile = async(person, id) => {
+    await fetch(URL + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(person)
+    });
+    getProfiles();
+    };
+
+  const createProfile =  async (profile) => {
+      await fetch(URL, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(profile)
+      });
+      getProfiles();
+    };
+
+  useEffect(() => {getProfiles()}, []);
 
   //global States
   const [moviesState, setMoviesState] = useState(null);
@@ -39,52 +71,20 @@ function App() {
     setMoviesState(data);
   };
 
-  const [profiles, setProfiles] = useState([]);
-  const URL = "https://back-streep-end.herokuapp.com/user"
+  // console.log(profiles);
 
-  const getProfiles =  async () => {
-    const response = await fetch (URL);
-    const data = await response.json();
-    setProfiles(data);
-  }
-
-const createProfile =  async (profile) => {
-  await fetch(URL, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(profile)
-  });
-  getProfiles();
-};
-
-const editProfile = async(person, id) => {
-await fetch(URL + id, {
-  method: "PUT",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-  body: JSON.stringify(person)
-});
-getProfiles();
-};
 
   useEffect(() => {
-    getMovies().then(() => {
-      getProfiles();
-    }
-    )
+    getMovies()
   }, 
   []);
 
-  
   return (
     <div className="App">
-      <Header trailer={trailer}/>
       <Switch>
       <Route exact path='/'>
         <Dashboard 
+        trailer={trailer}
         movies={moviesState} 
         getMovies={getMovies} 
         profiles={profiles} 
@@ -98,8 +98,8 @@ getProfiles();
         <UserAdd createProfile={createProfile} {...rp}/>
       )
       }/>
-      <Route path="/:id/edit" render={rp => (
-        <UserEdit editProfile={editProfile} profiles={profiles} {...rp}/>
+      <Route path="/:id/edit" render={(rp) => (
+        <UserEdit {...rp} editProfile={editProfile} profiles={profiles} />
       )}/>
       </Switch>
       <Footer/>
