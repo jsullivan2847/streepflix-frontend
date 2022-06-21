@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+  color: white;
+}
 .App {
   text-align: center;
   background-color: black;
@@ -24,8 +28,6 @@
   justify-content: space-between;
 }
 .nav a{
-  text-decoration: none;
-  color: white;
   margin: 0 25px;
   height: 65px;
 }
@@ -93,4 +95,15 @@
 	font-size: 15px;
 	padding: 0;
 	text-align: center;
+}
+
+.add-user-link{
+  color: red;
+}
+.user{
+  display: flex;
+  justify-content: space-between;
+}
+.user-select-container{
+  margin: 0 auto;
 }
