@@ -7,7 +7,7 @@ const UserEdit = ({match, profiles, history, editProfile}) => {
 
     console.log(profiles);
     
-    
+
     const [editForm, setEditForm] = useState(profile)
     
     const handleChange = (evt) => {

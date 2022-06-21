@@ -53,8 +53,6 @@ function App() {
     setTrailer(trailer);
   }
 
-
-
   const API_KEY = "9a7f92208080c78b13a3339d7394e0ee";
   const merylID = '5064';
 
@@ -70,8 +68,6 @@ function App() {
     //sets movie state with the data retrieved
     setMoviesState(data);
   };
-
-  // console.log(profiles);
 
 
   useEffect(() => {
