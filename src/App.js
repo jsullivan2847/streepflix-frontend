@@ -12,7 +12,7 @@ import Nav from './components/Nav';
 function App() {
 
   const [profiles, setProfiles] = useState([]);
-  const URL = "https://back-streep-end.herokuapp.com/user"
+  const URL = "https://back-streep-end.herokuapp.com/user/"
 
   const getProfiles =  async () => {
     const response = await fetch (URL);
@@ -41,6 +41,16 @@ function App() {
       });
       getProfiles();
     };
+
+  const deleteProfile = async (id) => {
+    await fetch(URL + id, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json", 
+      },
+    });
+    getProfiles();
+  }
 
   useEffect(() => {getProfiles()}, []);
 
@@ -97,7 +107,6 @@ useEffect(() => {
   selectMyProfile()
 }, [activeUser])
 
-console.log(myProfile)
 
   return (
     <div className="App">
@@ -126,7 +135,7 @@ console.log(myProfile)
       </Route>
 
       <Route path="/:id/edit" render={(rp) => (
-        <UserEdit {...rp} editProfile={editProfile} profiles={profiles} />
+        <UserEdit {...rp} editProfile={editProfile} profiles={profiles} deleteProfile={deleteProfile} />
       )}/>
       </Switch>
       <Footer/>

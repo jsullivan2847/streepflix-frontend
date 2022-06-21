@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react'
 
-const UserEdit = ({match, profiles, history, editProfile}) => {
+const UserEdit = ({match, profiles, history, editProfile, deleteProfile}) => {
     const id = match.params.id
     // const profiles = props.profiles
     const profile = profiles.find(p => p._id === id);
 
-    console.log(profiles);
+    // console.log(profiles);
     
     
     const [editForm, setEditForm] = useState(profile)
@@ -19,6 +20,10 @@ const UserEdit = ({match, profiles, history, editProfile}) => {
         editProfile(editForm, profile._id);
         history.push("/");
     }
+
+    const handleClick = () => {
+        deleteProfile(id)
+    }
     // console.log(props);
     
     return(
@@ -29,6 +34,9 @@ const UserEdit = ({match, profiles, history, editProfile}) => {
             <input type="text" name="image" onChange={handleChange} value={editForm.image} ></input> <br/>
             <button>Edit Profile</button>
         </form>
+        <Link to ="/login">
+        <button onClick={handleClick}>Delete</button>
+        </Link>
         </div>
     )
 }

@@ -112,8 +112,22 @@ a {
 }
 .user{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+}
+.user img{
+  width: 40%;
+  max-height: 70%;
+  object-fit: cover;
+  border-radius: 5px;
 }
 .user-select-container{
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.user-controls{
+  display: flex;
 }
