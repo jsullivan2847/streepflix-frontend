@@ -1,6 +1,5 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
-import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
@@ -78,16 +77,18 @@ getProfiles();
     )
   }, 
   []);
+
+  
   return (
     <div className="App">
-      <Nav/>
-      <Switch>
       <Header trailer={trailer}/>
+      <Switch>
       <Route exact path='/'>
         <Dashboard 
-        movies={movieState} 
+        movies={moviesState} 
         getMovies={getMovies} 
         profiles={profiles} 
+        displayTrailer={displayTrailer}
         />
       </Route>
       <Route path="/login">

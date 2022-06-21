@@ -1,4 +1,3 @@
-import movieTrailer from "movie-trailer";
 import { useState } from "react";
 import Video from "./Video";
 const Movie = ({movie, displayTrailer, getTrailer}) => {
@@ -8,7 +7,6 @@ const Movie = ({movie, displayTrailer, getTrailer}) => {
     const [trailer, setTrailer] = useState(null);
     //bas URL for poster src
     const posterURL = 'http://image.tmdb.org/t/p/w185'
-
 
     //retrieves movie specific trailer URL param
     // const getTrailer = () => {

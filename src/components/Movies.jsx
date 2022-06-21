@@ -3,7 +3,10 @@ import { useState } from "react";
 import movieTrailer from "movie-trailer";
 const Movies = ({movies, displayTrailer}) => {
 
+
+
     const [trailer, setTrailer] = useState(null);
+   
     displayTrailer(trailer);
 
     const getTrailer = (title) => {
