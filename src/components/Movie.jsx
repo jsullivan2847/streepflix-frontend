@@ -21,13 +21,6 @@ const Movie = ({movie, displayTrailer, getTrailer}) => {
     //Loads youtube embed
     const trailerLoaded = () => {
         return (
-            
-            // <iframe src={`https://www.youtube.com/embed/${trailer}?autplay=1`} 
-            // frameBorder="0"
-            // allow="autoplay"
-            // title="video"
-            // allowFullScreen>
-            // </iframe> 
             <Video trailer={trailer}/>
         )
     }
