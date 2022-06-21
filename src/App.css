@@ -7,6 +7,16 @@
   min-height: 100vh;
 }
 
+.header{
+  position: fixed;
+  margin: 0 auto;
+  background-color: black;
+  top: 0;
+  left: 0;
+  height: fit-content;
+  z-index: 1;
+}
+
 .nav{
   display: flex;
   justify-content: space-around;
