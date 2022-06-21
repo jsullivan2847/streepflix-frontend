@@ -81,19 +81,29 @@ a {
   cursor: pointer;
   transform: scale(1.1);
 }
-.movie-container:hover .overlay {
+.movie-container:hover .btn {
+  display: inline-block;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
   opacity: 1;
 }
+/* .btn span {
+  font-size: 20px;
+} */
 
-.overlay {
+.btn {
 	position: relative;
 	background: rgba(0, 0, 0, 0.8);
-	width: 100%;
+	width: 90%;
 	transition: 0.5s ease;
-	opacity: 0;
+	display: none;
 	bottom: 5px;
 	font-size: 15px;
 	padding: 0;
+  margin: 0;
 	text-align: center;
 }
 
