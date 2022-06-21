@@ -13,6 +13,9 @@ const Movie = ({movie, getTrailer}) => {
     const movieLoaded = () => {
         return ( <div className="posters-container">
             <img onClick={handleClick} src={posterURL + poster_path} alt={title + "poster"}/>
+            <div className="overlay">
+                add to favorites
+            </div>
             <h5>{title}</h5> 
             </div>
         )
