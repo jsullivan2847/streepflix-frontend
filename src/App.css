@@ -29,6 +29,10 @@
   margin: 0 25px;
   height: 65px;
 }
+.nav .favs {
+  position: absolute;
+  left: 10%;
+}
 .dashboard-container {
   width: 100vw;
   min-height: 70vh;
@@ -74,4 +78,19 @@
 .posters-container:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+.movie-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+	position: relative;
+	background: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 5px;
+	font-size: 15px;
+	padding: 0;
+	text-align: center;
 }
