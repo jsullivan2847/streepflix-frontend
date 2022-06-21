@@ -73,11 +73,29 @@ function App() {
 
   // console.log(profiles);
 
+  //activeUser
+  const [activeUser, setActiveUser] = useState(null)
+const selectUser = (id) => {
+setActiveUser(id)
+selectMyProfile()
+}
 
   useEffect(() => {
     getMovies()
   }, 
   []);
+
+const [myProfile, setMyProfile] = useState(null)
+const selectMyProfile = () => {
+  const profile = profiles.find(p => p._id === activeUser)
+  setMyProfile(profile)
+}
+
+useEffect(() => {
+  selectMyProfile()
+}, [activeUser])
+
+console.log(myProfile)
 
   return (
     <div className="App">
@@ -92,7 +110,7 @@ function App() {
         />
       </Route>
       <Route path="/login">
-        <UserSelect profiles={profiles}/>
+        <UserSelect profiles={profiles} activeUser={activeUser} selectUser={selectUser}/>
       </Route>
       <Route path="/new" render={rp => (
         <UserAdd createProfile={createProfile} {...rp}/>
