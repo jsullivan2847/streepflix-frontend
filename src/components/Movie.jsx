@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddFavorite from './AddFavorite'
 import Video from "./Video";
-const Movie = ({movie, getTrailer}) => {
+const Movie = ({movie, getTrailer, updateFavorites}) => {
     //Destructuring the movie info
     const {title, poster_path} = movie;
     //State for movie trailer
@@ -14,7 +14,7 @@ const Movie = ({movie, getTrailer}) => {
     const movieLoaded = () => {
         return ( <div className="posters-container">
             <img onClick={handleClick} src={posterURL + poster_path} alt={title + "poster"}/>
-            <AddFavorite />
+            <AddFavorite movie={movie} updateFavorites={updateFavorites}/>
             <h5>{title}</h5> 
             </div>
         )

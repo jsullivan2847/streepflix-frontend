@@ -97,6 +97,13 @@ useEffect(() => {
   selectMyProfile()
 }, [activeUser])
 
+const [favorites, setFavorites] = useState([])
+
+const updateFavorites = (movie) => {
+  const newFavoriteMovie = [...favorites, movie]
+  setFavorites(newFavoriteMovie)
+}
+
 console.log(myProfile)
 
   return (
@@ -111,6 +118,7 @@ console.log(myProfile)
         profiles={profiles} 
         displayTrailer={displayTrailer}
         myProfile={myProfile}
+        updateFavorites={updateFavorites}
         />
       </Route>
       <Route path="/login"
@@ -122,7 +130,7 @@ console.log(myProfile)
       }/>
 
       <Route path='/favorites'>
-        <FavoritePage />
+        <FavoritePage favorites={favorites} displayTrailer={displayTrailer} getMovies={getMovies} updateFavorites={updateFavorites} />
       </Route>
 
       <Route path="/:id/edit" render={(rp) => (

@@ -1,15 +1,15 @@
 import {React, useState} from 'react'
 
-const AddFavorite = (props) => {
-  const [favorites, setFavorites] = useState([])
+const AddFavorite = ({movie, updateFavorites}) => {
+//   const [favorites, setFavorites] = useState([])
 
-  // const addFavoriteMovie = (movie) => {
-  //   const newFavoriteMovie = [...favorites, movie]
-  //   setFavorites(newFavoriteMovie)
-  // }
-
+//   const addFavoriteMovie = (movie) => {
+//     const newFavoriteMovie = [...favorites, movie]
+//     setFavorites(newFavoriteMovie)
+  
   const handleFavoriteClick = () => {
-    alert('clicked')
+    updateFavorites(movie)
+    // console.log(...favorites)
   }
 
   return (
