@@ -107,7 +107,31 @@ useEffect(() => {
   selectMyProfile()
 }, [activeUser])
 
-  return (
+const [favorites, setFavorites] = useState([])
+
+
+
+useEffect(() => {
+  const movieFavorite = JSON.parse(
+    localStorage.getItem('react-movies')
+  )
+
+  setFavorites(movieFavorite)
+}, [])
+  // localStorage
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('react-movies', JSON.stringify(items))
+  }
+
+const updateFavorites = (movie) => {
+      const newFavoriteMovie = [...favorites, movie]
+      setFavorites(newFavoriteMovie)
+      saveToLocalStorage(newFavoriteMovie)
+      console.log(...favorites)
+}
+
+
+    return (
     <div className="App">
       <Nav user={myProfile}/>
       <Switch>
@@ -119,6 +143,7 @@ useEffect(() => {
         profiles={profiles} 
         displayTrailer={displayTrailer}
         myProfile={myProfile}
+        updateFavorites={updateFavorites}
         />
       </Route>
       <Route path="/login"
@@ -130,7 +155,7 @@ useEffect(() => {
       }/>
 
       <Route path='/favorites'>
-        <FavoritePage />
+        <FavoritePage favorites={favorites} displayTrailer={displayTrailer} getMovies={getMovies} updateFavorites={updateFavorites}/>
       </Route>
 
       <Route path="/:id/edit" render={(rp) => (
