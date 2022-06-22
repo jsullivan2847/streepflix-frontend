@@ -96,15 +96,16 @@ a {
 
 .btn {
 	position: relative;
-	background: rgba(0, 0, 0, 0.8);
-	width: 90%;
+	background: rgba(100, 100, 100, 0.8);
+	width: 96%;
 	transition: 0.5s ease;
 	display: none;
 	bottom: 5px;
 	font-size: 15px;
 	padding: 0;
-  margin: 5px;
 	text-align: center;
+  border: none;
+  border-radius: 2px;
 }
 
 .add-user-link{
