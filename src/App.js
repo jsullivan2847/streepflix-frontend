@@ -133,7 +133,6 @@ const updateFavorites = (movie) => {
 
     return (
     <div className="App">
-      <Nav user={myProfile}/>
       <Switch>
       <Route exact path='/'>
         <Dashboard 

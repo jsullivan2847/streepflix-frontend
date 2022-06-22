@@ -6,7 +6,7 @@ const Dashboard = ({movies, getMovies, displayTrailer, trailer, myProfile, updat
 
   if (myProfile){return (
     <div className="dashboard-container">
-      <Header trailer={trailer}/>
+      <Header trailer={trailer} user={myProfile}/>
       <Movies displayTrailer={displayTrailer} movies={movies} getMovies={getMovies} updateFavorites={updateFavorites} />
     </div>
   );
