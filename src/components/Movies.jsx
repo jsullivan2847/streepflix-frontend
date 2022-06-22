@@ -25,9 +25,12 @@ const Movies = ({movies, displayTrailer, updateFavorites}) => {
                 }      
         });
         }
-
     }
-    return loaded()
+    const loading = () => {
+        return <div className="spinner">
+        </div>
+    }
+    return movies ? loaded() : loading()
 }
 
 export default Movies;

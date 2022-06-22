@@ -131,6 +131,23 @@ a {
 .user-controls{
   display: flex;
 }
+
+.spinner {
+  border-top:  4px solid red;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loadingSpinner 0.9s linear infinite;
+}
+
+@keyframes loadingSpinner {
+  100% {
+    transform: rotate(360deg)
+  }
+
 .nav-user{
   margin-right: 5px;
   display: flex;

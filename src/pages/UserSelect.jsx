@@ -7,7 +7,7 @@ const UserSelect = (props) => {
 
     return(
         <div className="user-select-container">
-            <h1>UserSelect</h1>
+            <h1>Select A User</h1>
             {props.profiles.map(profile => (
                 <div className="user" key = {profile._id}>
                     <img className="posters-container"src={profile.image} onClick={handleClick} id={profile._id}></img>
