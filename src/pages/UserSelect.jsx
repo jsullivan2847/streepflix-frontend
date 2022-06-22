@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 const UserSelect = (props) => {
     const handleClick = (e) => {
         props.selectUser(e.target.attributes.id.nodeValue)
-        console.log(e.target.nextSibling.innerText)
         props.history.push("/")
     }
-// console.log(props)
+
     return(
         <div className="user-select-container">
             <h1>Select A User</h1>
@@ -16,7 +15,7 @@ const UserSelect = (props) => {
                     <div className="user-controls">
                         <h3>{profile.name}</h3>
                     <Link to={`${profile._id}/edit`}>
-                        <h3 className="posters-container"> &#9998;</h3>
+                        <h3 className="posters-container mirror"> &#9998;</h3>
                     </Link>
                     </div>
                     </div>

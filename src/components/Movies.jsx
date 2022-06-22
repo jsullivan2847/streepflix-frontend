@@ -1,7 +1,7 @@
 import Movie from "./Movie";
 import { useState } from "react";
 import movieTrailer from "movie-trailer";
-const Movies = ({movies, displayTrailer}) => {
+const Movies = ({movies, displayTrailer, updateFavorites}) => {
 
     const [trailer, setTrailer] = useState(null);
    
@@ -21,7 +21,7 @@ const Movies = ({movies, displayTrailer}) => {
                 //Stops app from rendering Movie components
                 //with broken poster links
                 if(movie.poster_path){
-                    return  <Movie getTrailer={getTrailer}displayTrailer={displayTrailer} movie={movie} key={index}/>
+                    return  <Movie getTrailer={getTrailer}displayTrailer={displayTrailer} movie={movie} key={index} updateFavorites={updateFavorites}/>
                 }      
         });
         }
