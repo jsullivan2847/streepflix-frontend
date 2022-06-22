@@ -1,8 +1,11 @@
 import Movies from "../components/Movies";
 import Header from "../components/Header";
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const Dashboard = ({movies, getMovies, displayTrailer, trailer, myProfile, updateFavorites}) => {
+
+  const history = useHistory();
 
   if (myProfile){return (
     <div className="dashboard-container">
@@ -11,9 +14,7 @@ const Dashboard = ({movies, getMovies, displayTrailer, trailer, myProfile, updat
     </div>
   );
   } else{
-    return(
-     <Link to="/login"> <h2>Please select a profile</h2></Link>
-    )
+    history.push('/login')
   }
 };
 
