@@ -110,7 +110,7 @@ useEffect(() => {
 const [favorites, setFavorites] = useState([])
 
 
-
+// local storage stuff
 useEffect(() => {
   const movieFavorite = JSON.parse(
     localStorage.getItem('react-movies')
