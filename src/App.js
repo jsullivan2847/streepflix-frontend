@@ -123,17 +123,6 @@ const [favorites, setFavorites] = useState({})
 
 // console.log(favorites);
 
-// useEffect(() => {
-//   const movieFavorite = JSON.parse(
-//     localStorage.getItem('react-movies')
-//   )
-
-//   setFavorites(movieFavorite)
-// }, [])
-//   // localStorage
-//   const saveToLocalStorage = (items) => {
-//     localStorage.setItem('react-movies', JSON.stringify(items))
-//   }
 
 const updateFavorites = (movie) => {
       // const newFavoriteMovie = [...favorites, movie]
