@@ -19,4 +19,7 @@ Streepflix is MERN app that models user data and pulls info from the TMDB API to
 # Getting Started
 
 # Future Improvements
-
+- User authorization 
+- Maybe an actor switch button 
+- Different css themes
+- Search feature 
