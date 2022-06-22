@@ -107,10 +107,9 @@ useEffect(() => {
   selectMyProfile()
 }, [activeUser])
 
-
   return (
     <div className="App">
-      <Nav/>
+      <Nav user={myProfile}/>
       <Switch>
       <Route exact path='/'>
         <Dashboard 
