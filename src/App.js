@@ -31,6 +31,18 @@ function App() {
     getProfiles();
     };
 
+    const editUserList = async(id, favorite) => {
+      await fetch(URL + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify(favorite),
+      });
+      getProfiles();
+      console.log(favorite);
+      };
+
   const createProfile =  async (profile) => {
       await fetch(URL, {
         method: "POST",
@@ -107,28 +119,25 @@ useEffect(() => {
   selectMyProfile()
 }, [activeUser])
 
-const [favorites, setFavorites] = useState([])
+const [favorites, setFavorites] = useState({})
 
+// console.log(favorites);
 
-// local storage stuff
-useEffect(() => {
-  const movieFavorite = JSON.parse(
-    localStorage.getItem('react-movies')
-  )
-
-  setFavorites(movieFavorite)
-}, [])
-  // localStorage
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem('react-movies', JSON.stringify(items))
-  }
 
 const updateFavorites = (movie) => {
-      const newFavoriteMovie = [...favorites, movie]
-      setFavorites(newFavoriteMovie)
-      saveToLocalStorage(newFavoriteMovie)
-      console.log(...favorites)
+      // const newFavoriteMovie = [...favorites, movie]
+      // setFavorites(newFavoriteMovie)
+      // saveToLocalStorage(newFavoriteMovie)
+      // console.log(...favorites.title)
+
+      setFavorites({list:[{
+        title: movie.title,
+        image: movie.poster_path
+      }]});
+      editUserList(myProfile,favorites);
 }
+
+console.log(myProfile);
 
 
     return (
@@ -154,7 +163,7 @@ const updateFavorites = (movie) => {
       }/>
 
       <Route path='/favorites'>
-        <FavoritePage favorites={favorites} displayTrailer={displayTrailer} getMovies={getMovies} updateFavorites={updateFavorites}/>
+        <FavoritePage displayTrailer={displayTrailer} getMovies={getMovies} updateFavorites={updateFavorites}/>
       </Route>
 
       <Route path="/:id/edit" render={(rp) => (
