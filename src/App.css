@@ -184,16 +184,18 @@ border: solid white 1px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 70vw;
+  min-height: 80vh;
 }
 .user-edit-page img{
   height: 200px;
   border-radius: 10px;
 }
 .profileImg {
-  width: 50vw;
+  width: 35vw;
 }
 .input {
-  width: 50vw;
+  width: 35vw;
 }
 .editTitle{
   width: 100vw;
@@ -208,7 +210,7 @@ input {
   border-radius: 2px;
   height: 30px;
   margin: 10px;
-  width: 40vw;
+  width: 35vw;
 }
 .delete{
   background-color: black;
@@ -239,6 +241,7 @@ form button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 80vh;
 }
 .newProfile h1 {
   width: 100vw;
