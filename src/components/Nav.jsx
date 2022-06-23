@@ -6,7 +6,7 @@ const Nav = ({user}) => {
             return (
                 <div className="nav">
                     <Link to="/favorites">
-                        <h3>My List</h3>
+                        {/* <h3>My List</h3> */}
                     </Link>
                     <div className="nav-user">
                         <Link to="/login">
