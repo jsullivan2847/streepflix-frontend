@@ -27,8 +27,9 @@ const UserEdit = ({match, profiles, history, editProfile, deleteProfile}) => {
     // console.log(props);
     
     return(
-        <div>
-        <h1>UserEdit Component</h1>
+        <div className='user-edit-page'>
+        <img src={profile.image} alt={profile.name} />
+        <p>{profile.name}</p>
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" onChange={handleChange} value={editForm.name} ></input> <br/>
             <input type="text" name="image" onChange={handleChange} value={editForm.image} ></input> <br/>
