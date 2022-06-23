@@ -12,13 +12,13 @@ const AddFavorite = ({movie, updateFavorites}) => {
     // console.log(...favorites)
   }
 
-  return (
-    <button 
-    className='btn'
-    onClick={handleFavoriteClick}
-    ><span>&#43;</span>
-    </button>
-  )
+  // return (
+  //   <button 
+  //   className='btn'
+  //   onClick={handleFavoriteClick}
+  //   ><span>&#43;</span>
+  //   </button>
+  // )
 }
 
 export default AddFavorite

@@ -94,7 +94,7 @@ a {
   font-size: 20px;
 } */
 
-.btn {
+/* .btn {
 	position: relative;
 	background: rgba(100, 100, 100, 0.8);
 	width: 96%;
@@ -106,7 +106,7 @@ a {
 	text-align: center;
   border: none;
   border-radius: 2px;
-}
+} */
 
 .add-user-link{
   color: red;
