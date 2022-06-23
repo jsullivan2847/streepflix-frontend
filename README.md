@@ -16,7 +16,7 @@ Streepflix is MERN app that models user data and pulls info from the TMDB API to
 
 # Screenshots
 
-![User Select page](https://imgur.com/a/EQD1px6)
+<img alt="User Select page" src="https://imgur.com/a/EQD1px6" width="500"/>
 
 # Getting Started
 
