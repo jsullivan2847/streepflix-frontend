@@ -12,7 +12,7 @@ a {
 }
 
 .header{
-  position: fixed;
+  position: sticky;
   margin: 0 auto;
   background-color: black;
   top: 0;
