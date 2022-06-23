@@ -28,16 +28,27 @@ const UserEdit = ({match, profiles, history, editProfile, deleteProfile}) => {
     
     return(
         <div className='user-edit-page'>
+            <div className='editTitle'>
+                <h2>Edit Profile</h2>
+            </div>
+
+            <div className='profileImg'>
         <img src={profile.image} alt={profile.name} />
-        <p>{profile.name}</p>
+            </div>
+
+            <div className='input'>
         <form onSubmit={handleSubmit}>
+
             <input type="text" name="name" onChange={handleChange} value={editForm.name} ></input> <br/>
             <input type="text" name="image" onChange={handleChange} value={editForm.image} ></input> <br/>
+
             <button>Edit Profile</button>
         </form>
+        
         <Link to ="/login">
-        <button onClick={handleClick}>Delete</button>
+        <button className='delete' onClick={handleClick}>Delete Profile</button>
         </Link>
+            </div>
         </div>
     )
 }

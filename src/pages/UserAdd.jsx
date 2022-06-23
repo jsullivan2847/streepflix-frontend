@@ -22,7 +22,7 @@ const UserAdd = (props) => {
     }
 
     return(
-        <div>
+        <div className='newProfile'>
         <h1>Add A New Profile</h1>
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" onChange={handleChange} placeholder="Profile Name"></input> <br/>

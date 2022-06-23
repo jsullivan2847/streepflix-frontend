@@ -114,7 +114,6 @@ a {
 .user{
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
   align-items: center;
 }
 .user img{
@@ -180,5 +179,67 @@ border: solid white 1px;
   text-align: center;
 }
 .user-edit-page{
+  display: flex;
   margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.user-edit-page img{
+  height: 200px;
+  border-radius: 10px;
+}
+.profileImg {
+  width: 50vw;
+}
+.input {
+  width: 50vw;
+}
+.editTitle{
+  width: 100vw;
+}
+iframe {
+  margin-bottom: 10px;
+}
+input {
+  background-color: rgb(80, 79, 79);
+  border: none;
+  color: white;
+  border-radius: 2px;
+  height: 30px;
+  margin: 10px;
+  width: 40vw;
+}
+.delete{
+  background-color: black;
+  color: darkgray;
+  height: 30px;
+  border: 1px solid darkgrey;
+  margin: 10px;
+  border-radius: 1px;
+}
+.delete:hover {
+  color: white;
+  border-color: white;
+}
+form button {
+  border: none;
+  border-radius: 1px;
+  background-color: white;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 30px;
+}
+form button:hover {
+  background-color: red;
+  color: white;
+  transition: 0.2s;
+}
+.newProfile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.newProfile h1 {
+  width: 100vw;
 }
