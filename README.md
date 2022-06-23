@@ -22,7 +22,10 @@ Streepflix is MERN app that models user data and pulls info from the TMDB API to
 
 # Getting Started
 
-Streepflix is currently deployed on netlify and you can try it out for yourself [here](https://www.google.com/)
+Streepflix is currently deployed on netlify and you can try it out for yourself [here](https://streepflix.netlify.app/)
+
+# Unsolved Problems
+- User Currently has to click twice on the user icon to log in :(( Issue with state
 
 # Future Improvements
 - User favorite lists
