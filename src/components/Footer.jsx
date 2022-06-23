@@ -1,6 +1,10 @@
 const Footer = () => {
     return(
-        <h1 className="footer">Footer Component</h1>
+        <div className="footer">
+            <p>Powered by the TMDB API</p>
+            <p>Developed by Kemcy DAlleygrand, James Sullivan, and Bradley Maher</p>
+        </div>
+        
     )
 }
 

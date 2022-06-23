@@ -171,3 +171,11 @@ border: solid white 1px;
 .mirror{
   transform: scaleX(-1);
 }
+.footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 200px;
+  font-size: 12px;
+  text-align: center;
+}

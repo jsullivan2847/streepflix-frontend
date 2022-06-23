@@ -10,7 +10,6 @@ const UserSelect = (props) => {
         {props.profiles.map(profile => (
             <div className="user" key = {profile._id}>
                 <img className="posters-container"src={profile.image} onClick={handleClick} id={profile._id}></img>
-                {/* <button onClick={handleClick} id={profile._id}>Use This Account</button> */}
                 <div className="user-controls">
                     <h3>{profile.name}</h3>
                 <Link to={`${profile._id}/edit`}>
