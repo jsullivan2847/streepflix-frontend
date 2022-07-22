@@ -98,7 +98,7 @@ function App() {
   // console.log(profiles);
 
   //activeUser
-  const [activeUser, setActiveUser] = useState(null)
+const [activeUser, setActiveUser] = useState(null)
 const selectUser = (id) => {
 setActiveUser(id)
 selectMyProfile()
@@ -110,8 +110,8 @@ selectMyProfile()
   []);
 
 const [myProfile, setMyProfile] = useState(null)
-const selectMyProfile = () => {
-  const profile = profiles.find(p => p._id === activeUser)
+const selectMyProfile = (id) => {
+  const profile = profiles.find(p => p._id === id)
   setMyProfile(profile)
 }
 
@@ -137,7 +137,7 @@ const updateFavorites = (movie) => {
       editUserList(myProfile,favorites);
 }
 
-console.log(myProfile);
+
 
 
     return (
@@ -155,7 +155,7 @@ console.log(myProfile);
         />
       </Route>
       <Route path="/login"
-        render={rp => (<UserSelect profiles={profiles} activeUser={activeUser} selectUser={selectUser} {...rp}/>)
+        render={rp => (<UserSelect profiles={profiles} selectUser={selectMyProfile} {...rp}/>)
    } />
       <Route path="/new" render={rp => (
         <UserAdd createProfile={createProfile} {...rp}/>
