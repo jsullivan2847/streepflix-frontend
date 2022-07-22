@@ -1,86 +1,98 @@
-import './App.css';
-import { Route, Switch } from 'react-router-dom';
-import Footer from './components/Footer';
-import Dashboard from './pages/Dashboard';
-import UserSelect from './pages/UserSelect';
-import UserEdit from './pages/UserEdit';
-import UserAdd from './pages/UserAdd';
-import FavoritePage from './pages/FavoritePage';
-import { useState, useEffect } from 'react';
-import Nav from './components/Nav';
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import Footer from "./components/Footer";
+import Dashboard from "./pages/Dashboard";
+import UserSelect from "./pages/UserSelect";
+import UserEdit from "./pages/UserEdit";
+import UserAdd from "./pages/UserAdd";
+import FavoritePage from "./pages/FavoritePage";
+import { useState, useEffect } from "react";
 
 function App() {
 
-  const [profiles, setProfiles] = useState([]);
-  const URL = "https://back-streep-end.herokuapp.com/user/"
+  //API CALL FROM BACKEND/////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const getProfiles =  async () => {
-    const response = await fetch (URL);
+  const URL = "https://back-streep-end.herokuapp.com/user/";
+
+  const [profiles, setProfiles] = useState([]);
+
+  const getProfiles = async () => {
+    const response = await fetch(URL);
     const data = await response.json();
     setProfiles(data);
-  }
+  };
 
-  const editProfile = async(person, id) => {
+  const editProfile = async (person, id) => {
     await fetch(URL + id, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/json",
       },
-      body: JSON.stringify(person)
+      body: JSON.stringify(person),
     });
     getProfiles();
-    };
+  };
 
-    const editUserList = async(id, favorite) => {
-      await fetch(URL + id, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-        body: JSON.stringify(favorite),
-      });
-      getProfiles();
-      console.log(favorite);
-      };
+  // const editUserList = async (id, favorite) => {
+  //   await fetch(URL + id, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "Application/json",
+  //     },
+  //     body: JSON.stringify(favorite),
+  //   });
+  //   getProfiles();
+  //   console.log(favorite);
+  // };
 
-  const createProfile =  async (profile) => {
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(profile)
-      });
-      getProfiles();
-    };
+  const createProfile = async (profile) => {
+    await fetch(URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(profile),
+    });
+    getProfiles();
+  };
 
   const deleteProfile = async (id) => {
     await fetch(URL + id, {
       method: "DELETE",
       headers: {
-        "content-type": "application/json", 
+        "content-type": "application/json",
       },
     });
     getProfiles();
-  }
+  };
 
-  useEffect(() => {getProfiles()}, []);
+  useEffect(() => {
+    getProfiles();
+  }, []);
 
+  //USER SELECT FOR LOGGIN IN////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const [myProfile, setMyProfile] = useState(null);
+  const selectMyProfile = (id) => {
+    const profile = profiles.find((p) => p._id === id);
+    setMyProfile(profile);
+  };
+
+   //API CALL TO MOVIE API//////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //global States
   const [moviesState, setMoviesState] = useState(null);
-
   const [trailer, setTrailer] = useState(null);
 
-  //This function will get passed down to movies, lift up 
+  //This function will get passed down to movies, lift up
   //trailer state and pass that back down to display in the header
   const displayTrailer = (trailer) => {
     setTrailer(trailer);
-  }
-
-
+  };
 
   const API_KEY = "9a7f92208080c78b13a3339d7394e0ee";
-  const merylID = '5064';
+  const merylID = "5064";
 
   const getMovies = async (searchTerm) => {
     //send request to API
@@ -95,82 +107,74 @@ function App() {
     setMoviesState(data);
   };
 
-  // console.log(profiles);
-
-  //activeUser
-const [activeUser, setActiveUser] = useState(null)
-const selectUser = (id) => {
-setActiveUser(id)
-selectMyProfile()
-}
-
   useEffect(() => {
-    getMovies()
-  }, 
-  []);
+    getMovies();
+  }, []);
 
-const [myProfile, setMyProfile] = useState(null)
-const selectMyProfile = (id) => {
-  const profile = profiles.find(p => p._id === id)
-  setMyProfile(profile)
-}
+  //FAVORITES/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+  // const [favorites, setFavorites] = useState({})
 
-useEffect(() => {
-  selectMyProfile()
-}, [activeUser])
+  // console.log(favorites);
 
-const [favorites, setFavorites] = useState({})
+  // const updateFavorites = (movie) => {
+  //       // const newFavoriteMovie = [...favorites, movie]
+  //       // setFavorites(newFavoriteMovie)
+  //       // saveToLocalStorage(newFavoriteMovie)
+  //       // console.log(...favorites.title)
 
-// console.log(favorites);
+  //       setFavorites({list:[{
+  //         title: movie.title,
+  //         image: movie.poster_path
+  //       }]});
+  //       editUserList(myProfile,favorites);
+  // }
 
-
-const updateFavorites = (movie) => {
-      // const newFavoriteMovie = [...favorites, movie]
-      // setFavorites(newFavoriteMovie)
-      // saveToLocalStorage(newFavoriteMovie)
-      // console.log(...favorites.title)
-
-      setFavorites({list:[{
-        title: movie.title,
-        image: movie.poster_path
-      }]});
-      editUserList(myProfile,favorites);
-}
-
-
-
-
-    return (
+  return (
     <div className="App">
       <Switch>
-      <Route exact path='/'>
-        <Dashboard 
-        trailer={trailer}
-        movies={moviesState} 
-        getMovies={getMovies} 
-        profiles={profiles} 
-        displayTrailer={displayTrailer}
-        myProfile={myProfile}
-        updateFavorites={updateFavorites}
+        <Route exact path="/">
+          <Dashboard
+            trailer={trailer}
+            movies={moviesState}
+            getMovies={getMovies}
+            // profiles={profiles}
+            displayTrailer={displayTrailer}
+            myProfile={myProfile}
+          />
+        </Route>
+        <Route
+          path="/login"
+          render={(rp) => (
+            <UserSelect
+              profiles={profiles}
+              selectUser={selectMyProfile}
+              {...rp}
+            />
+          )}
         />
-      </Route>
-      <Route path="/login"
-        render={rp => (<UserSelect profiles={profiles} selectUser={selectMyProfile} {...rp}/>)
-   } />
-      <Route path="/new" render={rp => (
-        <UserAdd createProfile={createProfile} {...rp}/>
-      )
-      }/>
+        <Route
+          path="/new"
+          render={(rp) => <UserAdd createProfile={createProfile} {...rp} />}
+        />
 
-      <Route path='/favorites'>
-        <FavoritePage displayTrailer={displayTrailer} getMovies={getMovies} updateFavorites={updateFavorites}/>
-      </Route>
+        <Route path="/favorites">
+          <FavoritePage displayTrailer={displayTrailer} getMovies={getMovies} />
+        </Route>
 
-      <Route path="/:id/edit" render={(rp) => (
-        <UserEdit {...rp} editProfile={editProfile} profiles={profiles} deleteProfile={deleteProfile} />
-      )}/>
+        <Route
+          path="/:id/edit"
+          render={(rp) => (
+            <UserEdit
+              {...rp}
+              editProfile={editProfile}
+              profiles={profiles}
+              deleteProfile={deleteProfile}
+            />
+          )}
+        />
       </Switch>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
