@@ -9,7 +9,13 @@ const Movies = ({movies, displayTrailer, updateFavorites}) => {
 
     const getTrailer = (title) => {
         movieTrailer(title, {id: true}).then(trailerID => {
-             setTrailer(trailerID);
+            if(trailerID === trailer){
+                console.log(trailerID)
+                setTrailer(null)
+            }
+            else{
+                setTrailer(trailerID);
+            }
          }).catch(error => console.log(error))
      }
     const loaded = () => {
